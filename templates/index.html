@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PlantLeafNet - Disease Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🌿 PlantLeafNet</h1>
+        <p>Advanced Plant Disease Detection using Deep Learning</p>
+
+        <form action="/predict" method="POST" enctype="multipart/form-data">
+
+            <label for="file">Upload a Leaf Image</label>
+            <input type="file" name="file" id="file" accept="image/*" required>
+
+            <button type="submit">Detect Disease</button>
+
+        </form>
+
+        {% if result %}
+        <div class="result">
+            <h2>Prediction Result</h2>
+            <h3>{{ result }}</h3>
+            <p>Confidence: {{ confidence }}%</p>
+            <p>{{ explanation }}</p>
+        </div>
+        {% endif %}
+
+    </div>
+
+</body>
+</html>
